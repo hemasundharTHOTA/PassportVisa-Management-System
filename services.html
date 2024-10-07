@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport and Visa Services</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #f4f4f4;
+            color: #333;
+
+
+        }
+        header {
+            background-color:green;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            border-radius: 25px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 0;
+        }
+        .section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .section h2 {
+            margin: 0 0 20px;
+            font-size: 2.5em;
+            color: #333;
+        }
+        .section p, .section ul {
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.6;
+            color: #666;
+        }
+        .section ul {
+            padding: 0;
+            list-style: none;
+        }
+        .section ul li {
+            margin: 10px 0;
+            text-align: left;
+        }
+        footer {
+            background: green;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            border-radius: 20px 20px 0 0;
+        }
+        footer p {
+            margin: 0;
+        }
+        /* Spinner */
+        #spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+        .spinner {
+            border: 8px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 8px solid #3498db;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Scroll-to-Top Button */
+        #scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 24px;
+            z-index: 1000;
+            display: none;
+        }
+        #scroll-to-top:hover {
+            background: #2980b9;
+        }
+
+        .Back{
+        	background-color: blue;
+        	width: 10vw;
+        	height: 6vh;
+        	border: none;
+        	color: white;
+        	border-radius: 25px;
+        	text-align: center;
+        }
+        .backBox{
+        	text-align: center;
+        	padding: 20px;
+        	font-weight: bold;
+        }
+        .main-heading{
+        	font-family: cursive;
+
+        }
+    </style>
+    <script>
+        function Loading() {
+            var spinner = document.getElementById("spinner");
+            var content = document.getElementById("content");
+            spinner.style.display = "flex";
+
+            setTimeout(function() {
+                spinner.style.display = "none";
+                content.style.display = "block";
+            }, 1000);
+        }
+
+        function Back(){
+        	window.location.href = "MainHome";
+        }
+
+    </script>
+</head>
+<body onload="Loading()">
+    <div id="spinner">
+        <div class="spinner"></div>
+    </div>
+
+    <header>
+        <h1 class="main-heading">Passport and Visa Services</h1>
+    </header>
+
+    <div class="container" id="content" style="display: none;">
+        <div class="section">
+            <h2>Our Services...</h2>
+            <p>We provide comprehensive services related to passport and visa applications, including:</p>
+            <ul>
+                <li>* New passport application assistance</li>
+                <li>* Passport renewal</li>
+                <li>* Visa application guidance for various countries</li>
+                <li>* Visa Cancellation Based on Policies</li>
+                <li>* Emergency passport services</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>How We Help...</h2>
+            <p>*Our team of experts is here to assist you at every step, ensuring that your passport or visa application is handled with care and efficiency. We understand the complexities of these processes and work to make them as smooth as possible for you.</p>
+        </div>
+
+        <div class="section">
+            <h2>Why Choose Us?</h2>
+            <ul>
+                <li>*Experienced professionals</li>
+                <li>*Quick processing times</li>
+                <li>*Personalized customer service</li>
+            </ul>
+        </div>
+
+        <p>Contact us today to learn more about how we can assist with your passport and visa needs.</p>
+    </div>
+
+	<div class="backBox">
+		<button onclick="Back()" class="Back">Back To Home</button>
+	</div>
+	<footer>
+        <p>&copy; 2024 Passport and Visa Services. All Rights Reserved.</p>
+    </footer>
+
+    <button id="scroll-to-top" onclick="scrollToTop()">&#8679;</button>
+</body>
+</html>
