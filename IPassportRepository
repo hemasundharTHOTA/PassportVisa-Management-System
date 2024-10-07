@@ -1,0 +1,27 @@
+from sqlalchemy import Column, String, Date, create_engine, desc
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+Base = declarative_base()
+
+class Passport(Base):
+    __tablename__ = 'passport'
+
+    user_name = Column('user_name', String, primary_key=True)
+    issue_date = Column('issue_date', Date)
+
+
+DATABASE_URL = 'sqlite:///passport_db.sqlite'  # Modify to your database URL
+engine = create_engine(DATABASE_URL)
+Session = sessionmaker(bind=engine)
+session = Session()
+
+def find_by_user_name_ignore_case(user_name):
+    return session.query(Passport).filter(Passport.user_name.ilike(user_name)).first()
+
+
+def find_all_by_order_by_issue_date_desc():
+    return session.query(Passport).order_by(desc(Passport.issue_date)).all()
+
+def close_session():
+    session.close()
