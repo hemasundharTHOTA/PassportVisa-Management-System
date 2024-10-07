@@ -1,0 +1,25 @@
+from flask import Flask
+import requests
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Welcome to the Passport Visa Application!"
+
+def create_rest_client():
+    # You can configure your requests session here if needed
+    session = requests.Session()
+    return session
+
+@app.route('/example_api_call')
+def example_api_call():
+    rest_client = create_rest_client()
+    response = rest_client.get('https://api.example.com/data')  # Example API call
+    if response.status_code == 200:
+        return response.json()  # Return JSON data from the API
+    else:
+        return "Error: Unable to fetch data", response.status_code
+
+if __name__ == '__main__':
+    app.run(debug=True)
