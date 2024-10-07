@@ -1,0 +1,43 @@
+from sqlalchemy import Column, String, create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+
+Base = declarative_base()
+
+class Visa(Base):
+    __tablename__ = 'visa'
+
+    visa_id = Column(String, primary_key=True)
+    visa_type = Column(String)
+    issued_date = Column(String)
+    expiry_date = Column(String)
+
+DATABASE_URL = 'sqlite:///passport_visa_db.sqlite'  # Change to your database URL
+engine = create_engine(DATABASE_URL)
+Session = sessionmaker(bind=engine)
+session = Session()
+
+class IVisaRepository:
+    def __init__(self):
+        self.session = Session()
+
+    def find_all(self):
+        return self.session.query(Visa).all()
+
+    def find_by_id(self, visa_id):
+        return self.session.query(Visa).filter_by(visa_id=visa_id).first()
+
+    def save(self, visa):
+        self.session.add(visa)
+        self.session.commit()
+
+    def delete_by_id(self, visa_id):
+        visa = self.find_by_id(visa_id)
+        if visa:
+            self.session.delete(visa)
+            self.session.commit()
+
+    def close_session(self):
+        self.session.close()
+
