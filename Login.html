@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <!-- Importing icons from Font Awesome and Boxicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- Embedded CSS -->
+    <style>
+        /* General styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4; /* Blank background with a light gray color */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Container for the form */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 1100px;
+            padding: 20px;
+        }
+
+        /* Navigation bar styling */
+        .nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .nav ul li {
+            display: inline;
+            margin: 10px;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #00FFFF;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .nav ul li a:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Login Panel */
+        .login-panel {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        /* Login Header */
+        .login-header h2 {
+            margin: 0;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Input fields */
+        .input-group {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            padding-right: 40px; /* Adjusted padding to make room for the icon */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .input-group i {
+            position: absolute;
+            right: 10px; /* Positioning icon on the right */
+            top: 10px;
+            color: #777;
+        }
+
+        .input-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .input-group button:hover {
+            background-color: #45a049;
+        }
+
+        /* Remember me and forgot password */
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .login-options a {
+            color: orange;
+            text-decoration: none;
+        }
+
+        .login-options a:hover {
+            text-decoration: underline;
+        }
+
+        /* Error message */
+        .error-msg {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Register link */
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .register-link a {
+            color: orange;
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="login-panel">
+            <div class="login-header">
+                <h2>Login</h2>
+            </div>
+            <form action="/login" method="POST">
+                <!-- Username field -->
+                <div class="input-group">
+                    <input type="text" name="userName" id="userName" placeholder="USERNAME" required>
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <!-- Contact field -->
+                <div class="input-group">
+                    <input type="text" id="contact" placeholder="CONTACT">
+                    <i class="fas fa-phone"></i>
+                </div>
+
+                <!-- Password field -->
+                <div class="input-group">
+                    <input type="password" name="password" id="pass" placeholder="PASSWORD" required>
+                    <i class="fas fa-lock"></i>
+                </div>
+
+                <!-- Remember me and forgot password -->
+                <div class="login-options">
+                    <label><input type="checkbox" name="remember"> Remember me</label>
+                    <a href="/forgot-password">Forget password</a>
+                </div>
+
+                <!-- Login button -->
+                <div class="input-group">
+                    <button type="submit">Login</button>
+                </div>
+
+                <!-- Register link -->
+                <div class="register-link">
+                    <span>Don't have an account? <a href="/register">Click To Register</a></span>
+                </div>
+
+                <p class="error-msg" id="ErrorMsg"></p>
+            </form>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class="nav">
+            <ul>
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
