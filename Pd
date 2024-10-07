@@ -1,0 +1,40 @@
+from sqlalchemy import create_engine, Column, String, Date
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import exc
+
+Base = declarative_base()
+
+
+class PDetails(Base):
+    __tablename__ = 'PDetails'
+
+    passport_id = Column(String(50), primary_key=True)
+    country = Column(String(100))
+    state = Column(String(100))
+    city = Column(String(100))
+    pin = Column(String(10))
+    service_type = Column(String(50))
+    book_type = Column(String(50))
+    issue_date = Column(Date)
+    expiry_date = Column(Date)
+    user_name = Column(String(100))
+    visas = Column(String)
+
+    def __init__(self, passport_id, country, state, city, pin, service_type, book_type, issue_date, expiry_date,
+                 user_name, visas):
+        self.passport_id = passport_id
+        self.country = country
+        self.state = state
+        self.city = city
+        self.pin = pin
+        self.service_type = service_type
+        self.book_type = book_type
+        self.issue_date = issue_date
+        self.expiry_date = expiry_date
+        self.user_name = user_name
+        self.visas = ','.join(visas)
+
+    def __repr__(self):
+        return f"<PDetails(passport_id={self.passport_id}, country={self.country}, state={self.state}, city={self.city}, pin={self.pin}, service_type={self.service_type}, book_type={self.book_type}, issue_date={self.issue_date}, expiry_date={self.expiry_date}, user_name={self.user_name}, visas={self.visas})>"
+
