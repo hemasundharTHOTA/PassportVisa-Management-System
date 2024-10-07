@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<style type="text/css">
+.main-page {
+	height: 95vh;
+	border: solid 2px white;
+	background-color: #FFDEE9;
+	background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+	padding: 10px;
+}
+
+.card-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: space-around;
+	padding: 10px;
+	margin-top: 20px;
+	height: 65%;
+	border: none;
+}
+
+/* Card styles */
+.card {
+	background-color: white;
+	border-radius: 8px;
+	padding: 20px;
+	height: 90%;
+	width:40vw;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Highlight effect on hover or focus */
+.card:hover, .card:focus {
+	border-color: #007bff;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	transform: scale(1.05);
+	outline: none; /* Remove default focus outline */
+}
+
+/* Ensures cards are focusable */
+.card:focus {
+	outline: 2px solid #007bff; /* Custom focus outline */
+}
+
+.MainHeading{
+	margin-right: 210px;
+	font-family: Times New Roman;
+	font-weight: bold;
+	color: green;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+.mainLogo{
+	width: 70px;
+	height: 50px;
+	margin: 0px;
+	margin-right: 130px;
+}
+
+
+.AC{
+	font-size: 50px;
+	color: green;
+}
+
+.RC{
+	background-image:url("https://t3.ftcdn.net/jpg/05/40/95/04/360_F_540950483_uAw9jMxVSrwBXpXOklb5xRc6KHWRQn4H.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.card{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items:center;
+	background: rgba(0, 0, 0, 0.1);
+}
+.card p{
+	color: gray;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+.card-heading{
+	margin-bottom: 10px;
+	color:green;
+	font-weight: bold;
+	font-size: 30px;
+	font-family: cursive;
+
+}
+
+.card-Btn{
+	color: blue;
+	margin-top:20px;
+	border: 2px solid green;
+	background: transparent;
+	width: 50%;
+	font-weight: bold;
+	border-radius: 30px;
+	height: 8vh;
+
+
+}
+
+.card-Btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card-Btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card-Btn:focus {
+    outline: none;
+}
+
+.a-box{
+	width: 50%;
+	height: 6%;
+	border: solid 2px green;
+	margin-top: 7px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-weight: bold;
+	color: white;
+	border-radius: 30px;
+	margin-left: 250px;
+}
+a{
+color: silver;
+text-decoration: none;
+}
+
+.P{
+	color: blue;
+}
+.ni{
+	margin-right: 4px;
+}
+
+.outer-menu{
+	display: flex;
+	justify-content:space-around;
+	align-items: center;
+
+}
+.welcome{
+	color: green;
+	font-weight: bold;
+	margin-top: 5px;
+	margin-top: 10px;
+}
+
+</style>
+<link rel="stylesheet" type="text/css"
+	href="${pageCotext.request.contextPath}/css/MainLoginPage.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
+	rel='stylesheet'>
+<script type="text/javascript">
+
+function Loading() {
+	var spinner = document.getElementById("spinner");
+	var content = document.getElementById("inner-box");
+	spinner.style.display = "flex";
+
+
+	setTimeout(function() {
+		spinner.style.display = "none";
+		content.style.display = "block";
+	}, 1000);
+}
+
+
+function P(){
+
+	window.location.href = 'ApplyPassport';
+
+}
+
+
+function RP(){
+	window.location.href = 'Re-PassportForm';
+}
+
+
+function AVF(){
+	window.location.href = 'ApplyVisa';
+}
+
+function REP(){
+	window.location.href = 'Re-PassportForm';
+}
+
+
+function CV(){
+	window.location.href = 'VisaCancelForm';
+}
+
+function Loading() {
+	var spinner = document.getElementById("spinner");
+	var content = document.getElementById("inner-box");
+	spinner.style.display = "flex";
+
+
+	setTimeout(function() {
+		spinner.style.display = "none";
+		content.style.display = "block";
+	}, 1000);
+}
+
+function toggleDropdown() {
+        document.querySelector('.profile-menu').classList.toggle('show-dropdown');
+    }
+
+
+
+	function Logout(){
+
+		var Logout = confirm("Do You Want To Logot...?");
+
+		if(Logout){
+
+		sessionStorage.removeItem("LoginUser");
+		window.location.replace("MainHome");
+		}else{
+			return false;
+		}
+	}
+
+</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body class="theme" onload="Loading()">
+	<div id="spinner">
+		<div class="spinner"></div>
+	</div>
+
+	<div class="main-page">
+
+
+		<div class="header">
+		<img class="mainLogo" alt="Img" src="https://5.imimg.com/data5/SELLER/Default/2022/5/JB/HX/RP/75600587/visa-and-passport-services-500x500.png">
+		<h1 class="MainHeading">Passport & Visa Management Services</h1>
+			<div class="profile-menu">
+				<div class="profile-header" onclick="toggleDropdown()">
+					<div id="profile-initial" class="profile-initial">${FL }</div>
+				</div>
+				<div class="dropdown-content">
+					<div class="profile-info">
+						<div class="name">${LoginUser.getFirstName()}</div>
+						<div class="email">${LoginUser.getEmail()}</div>
+					</div>
+						<a href="/Profile" class="dropdown-item"><i class="fas fa-user"></i>Profile</a>
+					<a href="/myPassports" class="dropdown-item"><i class="fas fa-passport icon"></i> My Passports</a>
+					<a href="myVisas" class="dropdown-item"><i class="fas fa-id-card icon "></i> My Visas</a>
+					<a href="UpdatePassword" class="dropdown-item"><i class="fas fa-key"></i> Change Password</a>
+					<a onclick="Logout()" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="outer-menu">
+			<div class="a-box">
+				<a class="H" href="MainLogin"><i class="fas fa-home icon "></i>Home</a>
+					<a class="P" href="PassportServices"><i class="fas fa-passport icon ni"></i>Passport Services</a>
+					<a class="V" href="VisaServices"><i class="fas fa-id-card icon ni"></i>Visa Services</a>
+
+			</div>
+			<a class="welcome" href="/Profile"><i class="fas fa-user ni"></i>${Name }</a>
+		</div>
+
+		<div class="card-container">
+		<div>
+			<div class="card" tabindex="0">
+
+				<i class="fa-solid fa-passport AC"></i>
+        <h2 class="card-heading">Apply for a Passport</h2>
+        <p>Start your journey with ease. Our streamlined application process ensures that you get your passport quickly and efficiently. Follow the steps below to apply:</p>
+
+			</div>
+			<button class="card-Btn" onclick="P()">Click To Apply</button>
+		</div>
+
+		<div>
+			<div class="card RC" tabindex="0">
+				<i class="fa-solid fa-sync AC"></i>
+        <h2 class="card-heading">Renew Your Passport</h2>
+        <p>Keep your passport up-to-date with our quick renewal process. Follow these simple steps to renew your passport:</p>
+        <ul>
+            <li>Fill out the online renewal application form.</li>
+
+            <li>Pay the renewal fee securely online.</li>
+
+        </ul>
+			</div>
+			<button class="card-Btn" onclick="RP()">Click To Renewal</button>
+		</div>
+		</div>
+		</div>
+		</body>
+</html>
