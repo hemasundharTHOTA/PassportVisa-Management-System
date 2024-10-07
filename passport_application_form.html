@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<meta charset="UTF-8">
+<title>ApplyPassport</title>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link
+	href="${pageContext.request.contextPath}/css/PassportApplicationForm.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/PassportApplicationForm.js"></script>
+</head>
+<body onload="Loading()">
+	<div id="spinner">
+		<div class="spinner"></div>
+	</div>
+	<div class="form-box">
+	<h1 class="main-heading">Passport Application Form</h1>
+	<form action="SubmitPassport" method="post">
+		<table>
+
+
+			 <tr>
+				<td class="form-group"><label for="userName">USER NAME:</label>
+					<input type="text" name="userName" id="userName" value="${LoginUser.getUserName() }"
+					required readonly> <span class="error" id="userNameError"></span>
+				</td>
+			</tr>
+			<tr>
+				<td class="form-group"><label for="country">COUNTRY:</label> <input
+					type="text" name="country" id="country" value="INDIA" required readonly>
+					<span class="error" id="countryError"></span></td>
+			</tr>
+			<tr>
+				<td class="form-group"><label  for="state">STATE:</label>
+				<select
+					name="state" onchange="MappingCities()" id="state" required>
+						<option value="Select"
+							<c:if test="${user.getState() =='Select'}">selected</c:if>>SELECT
+						</option>
+						<option value="Andhra Pradesh"
+							<c:if test="${user.getState() =='Andhra Pradesh'}">selected</c:if>>Andhra Pradesh
+						</option>
+						<option value="Orissa"
+							<c:if test="${user.getState() =='Orissa'}">selected</c:if>>Orissa
+							</option>
+						<option value="West Bengal"
+							<c:if test="${user.getState() =='West Bengal'}">selected</c:if>>West Bengal
+						</option>
+						<option value="Bihar"
+							<c:if test="${user.getState() =='Bihar'}">selected</c:if>>Bihar
+						</option>
+						<option value="Kerala"
+							<c:if test="${user.getState() =='Kerala'}">selected</c:if>>Kerala
+							</option>
+				</select>
+				<span class="error" id="stateError"></span></td>
+			</tr>
+			<tr>
+				<td class="form-group"><label for="city">CITY:</label> <select
+					name="city" id="city">
+
+						 <option value="Select"
+							<c:if test="${user.getCity() =='Select'}">selected</c:if>>SELECT</option>
+					<%--
+						<option value="Bhubaneswar"
+							<c:if test="${user.getCity() =='Bhubaneswar'}">selected</c:if>>Bhubaneswar</option>
+						<option value="Cuttack"
+							<c:if test="${user.getCity() =='Cuttack'}">selected</c:if>>Cuttack</option>
+						<option value="Jajpur"
+							<c:if test="${user.getCity() =='Jajpur'}">selected</c:if>>Jajpur</option>
+						<option value="Kolkata"
+							<c:if test="${user.getCity() =='Kolkata'}">selected</c:if>>Kolkata</option>
+						<option value="Howrah"
+							<c:if test="${user.getCity() =='Howrah'}">selected</c:if>>Howrah</option>
+						<option value="Patna"
+							<c:if test="${user.getCity() =='Patna'}">selected</c:if>>Patna</option>
+						<option value="Gaya"
+							<c:if test="${user.getCity() =='Gaya'}">selected</c:if>>Gaya</option>
+						<option value="Kochi"
+							<c:if test="${user.getCity() =='Kochi'}">selected</c:if>>Kochi</option>
+						<option value="Kayamkulam"
+							<c:if test="${user.getCity() =='Kayamkulam'}">selected</c:if>>Kayamkulam</option>
+						<option value="Hyderabad"
+							<c:if test="${user.getCity() =='Hyderabad'}">selected</c:if>>Hyderabad</option>
+						<option value="Bellampalle"
+							<c:if test="${user.getCity() =='Bellampalle'}">selected</c:if>>Bellampalle</option> --%>
+				</select><span class="error" id="cityError"></span></td>
+			</tr>
+			<tr>
+				<td class="form-group"><label for="pin">PIN:</label> <input
+					type="number" placeholder="Enter Security Pin" name="pin" id="pin" value="${user.getPin() }"
+					> <span class="error" id="pinError"></span></td>
+			</tr>
+			<tr>
+				<td class="form-group"><label for="typeOfService">TYPE
+						OF SERVICE:</label> <select name="serviceType" id="typeOfService"
+					required>
+						<option value="Select"
+							<c:if test="${user.getTypeOfService()=='Select' }">selected</c:if>>SELECT</option>
+						<option value="Normal"
+							<c:if test="${user.getTypeOfService()=='Normal' }">selected</c:if>>Normal</option>
+						<option value="Tatkal"
+							<c:if test="${user.getTypeOfService()=='Tatkal' }">selected</c:if>>Tatkal</option>
+
+				</select><span class="error" id="typeOfServiceError"></span></td>
+			</tr>
+			<tr>
+				<td class="form-group"><label for="bookType">BOOKLET
+						TYPE:</label> <select name="bookType" id="bookletType" required>
+						<option value="Select"
+							<c:if test="${user.getBookletType()=='Select' }">selected</c:if>>SELECT</option>
+						<option value="30 Pages"
+							<c:if test="${user.getBookletType()=='30 Pages' }">selected</c:if>>30
+							Pages</option>
+						<option value="60 Pages"
+							<c:if test="${user.getBookletType()=='60 Pages' }">selected</c:if>>60
+							Pages</option>
+
+				</select><span class="error" id="bookletTypeError"></span></td>
+			</tr>
+
+
+			<tr>
+                <td class="form-group">
+                    <label for="issueDate">Date Of Issue:</label>
+                    <input value="-1" type="date" id="issueDate" name="issueDate">
+                    <span class="error" id="issueDateError"></span>
+                </td>
+            </tr>
+
+		</table>
+		<div class="btn-div">
+
+		<button onclick="Back()" type="button" class="submit s-btn1"><i class="fas fa-arrow-left icon"></i>BACK</button>
+		<button type="submit" onclick="return validateForm()" class="submit s-btn2">SUBMIT</button>
+
+		</div>
+	</form>
+	</div>
+	<div class="MsgBox">
+		<p id="ErrorMsg" class="errorMsg">${Error}</p>
+		<p id="succesMsg1" class="successMsg">${Status}</p>
+		<p id="succesMsg2" class="successMsg">${PID }</p>
+	</div>
+</body>
+</html>
